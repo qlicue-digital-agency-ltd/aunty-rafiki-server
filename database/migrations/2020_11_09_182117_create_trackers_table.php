@@ -18,12 +18,13 @@ class CreateTrackersTable extends Migration
 
             $table->string('title');
             $table->string('subtitle')->nullable();
-            $table->string('body')->nullable();
+            $table->longText('body')->nullable();
             $table->string('media')->nullable();
-            $table->date('time');
             $table->string('type');
-            $table->string('day');
-            $table->integer('week');
+            $table->bigInteger('week');
+            $table->bigInteger('days');
+            $table->longText('normal')->nullable();
+            $table->longText('abnormal')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

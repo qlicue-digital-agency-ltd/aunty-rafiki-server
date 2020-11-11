@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 ///Trackers End Points
-Route::get('trackers', ['uses' => 'TrackerController@getTrackers']);
+Route::post('trackers', ['uses' => 'TrackerController@getTrackers']);
 Route::post('tracker', ['uses' => 'TrackerController@postTracker']);
 Route::put('tracker/{trackerId}', ['uses' => 'TrackerController@putTracker']);
 Route::get('tracker/{trackerId}', ['uses' => 'TrackerController@getTracker']);

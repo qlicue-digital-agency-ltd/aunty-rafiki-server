@@ -3,20 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Tracker;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class TrackerController extends Controller
 {
-    public function getTrackers()
+    public function getTrackers(Request $request)
     {
-        $trackers = Tracker::all();
-        foreach ($trackers as $tracker) {
-            $tracker->business;
+        $key = 0;
+        $conception_date = Carbon::parse($request->conception_date);
+        $weeks =  $conception_date->diffInWeeks(Carbon::now());
+        $days =  $conception_date->diffInDays(Carbon::now());
+        ///dd($weeks, $days);
+        $trackers = Tracker::orderBy('id', 'DESC')->get();
+
+
+        $filteredTrackers = $trackers->reject(function ($tracker, $index) use ($days) {
+
+            return $tracker->days > $days;
+        })->values();
+
+        foreach ($filteredTrackers  as $tracker) {
+            if ($tracker->type != "checkpoint") {
+                $tracker->time = Carbon::now()->subDays($key);
+                $key++;
+            }else{
+
+            } $tracker->time = Carbon::now()->subDays($key);
         }
-        return response()->json(['trackers' => $trackers]);
+        return response()->json(['trackers' =>  $filteredTrackers], 200, [], JSON_NUMERIC_CHECK);
     }
 
 
@@ -34,22 +51,20 @@ class TrackerController extends Controller
     public function postTracker(Request $request)
     {
 
-        
+
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'week' => 'required',
             'type' => 'required',
-
         ]);
 
+
         if ($validator->fails()) {
-            $msgs = $validator->errors()->all();
-            $message = '';
-            foreach ($msgs as $msg) {
-                $message .= $msg;
-            }
-            return back()->with(['error' => $message, 'errors' => $validator->errors()]);
+
+            return response()->json(['errors' => $validator->errors()]);
         }
+
+
 
         if (!$request->hasFile('media')) {
             $this->path = null;
