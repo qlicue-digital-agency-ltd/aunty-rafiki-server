@@ -41,6 +41,12 @@ Route::put('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@putBloo
 Route::get('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@getBloodLevel']);
 Route::delete('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@deleteBloodLevel']);
 
+///Tasks End Points
+Route::post('task', ['uses' => 'TaskController@postTask']);
+Route::get('tasks/{userId}', ['uses' => 'TaskController@getTasks']);
+Route::put('task/{taskId}', ['uses' => 'TaskController@putTask']);
+Route::get('task/{taskId}', ['uses' => 'TaskController@getTask']);
+Route::delete('task/{taskId}', ['uses' => 'TaskController@deleteTask']);
 
 //User End Points
 Route::get('/users', 'UserController@users');
