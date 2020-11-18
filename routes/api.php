@@ -27,6 +27,21 @@ Route::put('tracker/{trackerId}', ['uses' => 'TrackerController@putTracker']);
 Route::get('tracker/{trackerId}', ['uses' => 'TrackerController@getTracker']);
 Route::delete('tracker/{trackerId}', ['uses' => 'TrackerController@deleteTracker']);
 
+///Appointments End Points
+Route::post('appointments', ['uses' => 'AppointmentController@getAppointments']);
+Route::post('appointment', ['uses' => 'AppointmentController@postAppointment']);
+Route::put('appointment/{appointmentId}', ['uses' => 'AppointmentController@putAppointment']);
+Route::get('appointment/{appointmentId}', ['uses' => 'AppointmentController@getAppointment']);
+Route::delete('appointment/{appointmentId}', ['uses' => 'AppointmentController@deleteAppointment']);
+
+///BloodLevels End Points
+Route::post('bloodlevel', ['uses' => 'BloodLevelController@postBloodLevel']);
+Route::get('bloodlevels/{userId}', ['uses' => 'BloodLevelController@getBloodLevels']);
+Route::put('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@putBloodLevel']);
+Route::get('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@getBloodLevel']);
+Route::delete('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@deleteBloodLevel']);
+
+
 //User End Points
 Route::get('/users', 'UserController@users');
 Route::post('/signup', 'UserController@register');
