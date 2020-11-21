@@ -48,6 +48,13 @@ Route::put('task/{taskId}', ['uses' => 'TaskController@putTask']);
 Route::get('task/{taskId}', ['uses' => 'TaskController@getTask']);
 Route::delete('task/{taskId}', ['uses' => 'TaskController@deleteTask']);
 
+///Timelines End Points
+Route::post('timeline', ['uses' => 'TimelineController@postTimeline']);
+Route::get('timelines', ['uses' => 'TimelineController@getTimelines']);
+Route::put('timeline/{timelineId}', ['uses' => 'TimelineController@putTimeline']);
+Route::get('timeline/{timelineId}', ['uses' => 'TimelineController@getTimeline']);
+Route::delete('timeline/{timelineId}', ['uses' => 'TimelineController@deleteTimeline']);
+
 //User End Points
 Route::get('/users', 'UserController@users');
 Route::post('/signup', 'UserController@register');

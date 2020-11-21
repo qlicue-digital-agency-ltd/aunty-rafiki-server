@@ -9,30 +9,30 @@ use Illuminate\Support\Facades\Validator;
 class TaskController extends Controller
 {
 
-    public function getAppointments($userId)
+    public function getTasks($userId)
     {
 
-        $appointments = Task::orderBy('id', 'DESC')->get();
+        $tasks = Task::orderBy('id', 'DESC')->get();
 
-        $filteredAppointments = $appointments->reject(function ($task, $index) use ($userId) {
+        $filteredTasks = $tasks->reject(function ($task, $index) use ($userId) {
 
             return $task->user_id != $userId;
         })->values();
 
-        return response()->json(['appointments' =>  $filteredAppointments], 200, [], JSON_NUMERIC_CHECK);
+        return response()->json(['tasks' =>  $filteredTasks], 200, [], JSON_NUMERIC_CHECK);
     }
 
 
-    public function getAppointment($appointmentId)
+    public function getTask($taskId)
     {
-        $task = Task::find($appointmentId);
+        $task = Task::find($taskId);
 
         if (!$task) return response()->json(['error' => 'Task Not Found'], 404);
 
         return response()->json(['task' => $task], 200);
     }
 
-    public function postAppointment(Request $request)
+    public function postTask(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
@@ -66,7 +66,7 @@ class TaskController extends Controller
         return response()->json(['task' => $task], 201, [], JSON_NUMERIC_CHECK);
     }
 
-    public function putAppointment(Request $request, $appointmentId)
+    public function putTask(Request $request, $taskId)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -83,7 +83,7 @@ class TaskController extends Controller
             return response()->json(['errors' => $validator->errors()]);
         }
 
-        $task = Task::find($appointmentId);
+        $task = Task::find($taskId);
 
         if (!$task) return response()->json(['error' => 'Task Not Found'], 404);
 
@@ -100,9 +100,9 @@ class TaskController extends Controller
         return response()->json(['task' => $task], 201);
     }
 
-    public function deleteAppointment($appointmentId)
+    public function deleteTask($taskId)
     {
-        $task = Task::find($appointmentId);
+        $task = Task::find($taskId);
 
         if (!$task) return response()->json(['error' => 'Task Not Found'], 404);
         $task->delete();

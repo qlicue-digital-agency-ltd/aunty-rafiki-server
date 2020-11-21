@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TrackerTableSeeder::class);
         $this->call(BloodLevelTableSeeder::class);
+        $this->call(TimelineTableSeeder::class);
     }
 }
