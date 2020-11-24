@@ -12,7 +12,7 @@ class TimelineController extends Controller
     public function getTimelines()
     {
 
-        $timelines = Timeline::orderBy('id', 'DESC')->get();
+        $timelines = Timeline::all();
         return response()->json(['timelines' =>  $timelines], 200, [], JSON_NUMERIC_CHECK);
     }
 
