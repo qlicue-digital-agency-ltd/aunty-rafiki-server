@@ -21,7 +21,7 @@ class CreateBloodLevelsTable extends Migration
             $table->string('subtitle');
             $table->double('quantity');
             $table->date('date');
-            $table->bigInteger('user_id');
+            $table->string('uid');
             $table->softDeletes();
             $table->timestamps();
         });

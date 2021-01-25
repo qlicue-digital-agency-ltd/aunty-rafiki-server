@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Validator;
 
 class BloodLevelController extends Controller
 {
-    public function getBloodLevels($userId)
+    public function getBloodLevels($uid)
     {
 
-        $bloodlevels = BloodLevel::orderBy('id', 'DESC')->get();
+        $bloodlevels = BloodLevel::all();
 
-        $filteredBloodLevels = $bloodlevels->reject(function ($bloodlevel, $index) use ($userId) {
+        $filteredBloodLevels = $bloodlevels->reject(function ($bloodlevel, $index) use ($uid) {
 
-            return $bloodlevel->user_id != $userId;
+            return $bloodlevel->uid != $uid;
         })->values();
 
         return response()->json(['bloodlevels' =>  $filteredBloodLevels], 200, [], JSON_NUMERIC_CHECK);
@@ -39,7 +39,7 @@ class BloodLevelController extends Controller
             'status' => 'required',
             'title' => 'required',
             'subtitle' => 'required',
-            'user_id' => 'required',
+            'uid' => 'required',
             'quantity' => 'required',
             'date' => 'required'
         ]);
@@ -58,7 +58,7 @@ class BloodLevelController extends Controller
         $bloodlevel->date = $request->date;
         $bloodlevel->subtitle = $request->subtitle;
         $bloodlevel->quantity = $request->quantity;
-        $bloodlevel->user_id = $request->user_id;
+        $bloodlevel->uid = $request->uid;
 
         $bloodlevel->save();
 
