@@ -41,6 +41,13 @@ Route::put('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@putBloo
 Route::get('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@getBloodLevel']);
 Route::delete('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@deleteBloodLevel']);
 
+///BagItems End Points
+Route::post('bagItem', ['uses' => 'BagItemController@postBagItem']);
+Route::get('bagItems/{uid}', ['uses' => 'BagItemController@getBagItems']);
+Route::put('bagItem/{bagitemId}', ['uses' => 'BagItemController@putBagItem']);
+Route::get('bagItem/{bagitemId}', ['uses' => 'BagItemController@getBagItem']);
+Route::delete('bagItem/{bagitemId}', ['uses' => 'BagItemController@deleteBagItem']);
+
 ///Tasks End Points
 Route::post('task', ['uses' => 'TaskController@postTask']);
 Route::get('tasks/{userId}', ['uses' => 'TaskController@getTasks']);
