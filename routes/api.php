@@ -44,6 +44,7 @@ Route::delete('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@dele
 ///BagItems End Points
 Route::post('bagItem', ['uses' => 'BagItemController@postBagItem']);
 Route::get('bagItems/{uid}', ['uses' => 'BagItemController@getBagItems']);
+Route::get('createBagItems/{uid}', ['uses' => 'BagItemController@seedUIDBagItems']);
 Route::put('bagItem/{bagitemId}', ['uses' => 'BagItemController@putBagItem']);
 Route::get('bagItem/{bagitemId}', ['uses' => 'BagItemController@getBagItem']);
 Route::delete('bagItem/{bagitemId}', ['uses' => 'BagItemController@deleteBagItem']);

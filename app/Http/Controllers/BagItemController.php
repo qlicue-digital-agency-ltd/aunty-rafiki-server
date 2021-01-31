@@ -101,4 +101,211 @@ class BagItemController extends Controller
 
         return response()->json(['bagItem' => 'BagItem deleted successfully'], 201);
     }
+
+    public function seedUIDBagItems($uid)
+    {
+        $bagitems = BagItem::all();
+
+        $filteredBagItems = $bagitems->reject(function ($bagitem, $index) use ($uid) {
+
+            return $bagitem->uid != $uid;
+        })->values();
+
+        //add them to the server first...
+        if ($filteredBagItems->isEmpty()) {
+            $this->seedBagItems($uid);
+            return response()->json(['message' => 'BagItems created successfully'], 201);
+        }
+        return response()->json(['message' => 'BagItems already created'], 201);
+    }
+    ///seed Bag Items for first time user..
+    public function seedBagItems($uid)
+    {
+
+        //mothers  bag.......
+        BagItem::create([
+            'name' => 'Birth plan',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Book magazine',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Breast pads',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Camera and batteries',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Dressing gown',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Facecloth or fan',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Gift for your older children',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Glucose tablets',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Going home outfit',
+            'owner' => 'mother',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        ///partner ..... 
+        BagItem::create([
+            'name' => 'Birth plan',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Book magazine',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Camera and batteries',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Earphones',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Wallet',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Doctors contact',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+        BagItem::create([
+            'name' => 'Extra money',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Transport or car',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Day Schedule',
+            'owner' => 'partner',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        ///baby items
+        BagItem::create([
+            'name' => 'Blancket',
+            'owner' => 'baby',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Clothes',
+            'owner' => 'baby',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Baby name',
+            'owner' => 'baby',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Soap',
+            'owner' => 'baby',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Baby oil',
+            'owner' => 'baby',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+
+        BagItem::create([
+            'name' => 'Pampers',
+            'owner' => 'baby',
+            'type' => 'original',
+            'is_packed' => false,
+            'uid' => $uid,
+        ]);
+    }
 }
