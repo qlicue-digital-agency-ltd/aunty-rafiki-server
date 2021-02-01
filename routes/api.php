@@ -63,6 +63,13 @@ Route::put('timeline/{timelineId}', ['uses' => 'TimelineController@putTimeline']
 Route::get('timeline/{timelineId}', ['uses' => 'TimelineController@getTimeline']);
 Route::delete('timeline/{timelineId}', ['uses' => 'TimelineController@deleteTimeline']);
 
+///Foods End Points
+Route::post('food', ['uses' => 'FoodController@postFood']);
+Route::get('foods', ['uses' => 'FoodController@getFoods']);
+Route::put('food/{foodId}', ['uses' => 'FoodController@putFood']);
+Route::get('food/{foodId}', ['uses' => 'FoodController@getFood']);
+Route::delete('food/{foodId}', ['uses' => 'FoodController@deleteFood']);
+
 //User End Points
 Route::get('/users', 'UserController@users');
 Route::post('/signup', 'UserController@register');
