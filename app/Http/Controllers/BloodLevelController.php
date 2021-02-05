@@ -21,6 +21,16 @@ class BloodLevelController extends Controller
         return response()->json(['bloodlevels' =>  $filteredBloodLevels], 200, [], JSON_NUMERIC_CHECK);
     }
 
+    public function getBlood()
+    {
+
+        $bloodlevels = BloodLevel::all();
+
+       
+
+        return response()->json(['bloodlevels' =>  $bloodlevels], 200, [], JSON_NUMERIC_CHECK);
+    }
+
 
     public function getBloodLevel($bloodlevelId)
     {

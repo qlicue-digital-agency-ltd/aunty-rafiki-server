@@ -36,6 +36,7 @@ Route::delete('appointment/{appointmentId}', ['uses' => 'AppointmentController@d
 
 ///BloodLevels End Points
 Route::post('bloodlevel', ['uses' => 'BloodLevelController@postBloodLevel']);
+Route::get('blood', ['uses' => 'BloodLevelController@getBlood']);
 Route::get('bloodlevels/{uid}', ['uses' => 'BloodLevelController@getBloodLevels']);
 Route::put('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@putBloodLevel']);
 Route::get('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@getBloodLevel']);

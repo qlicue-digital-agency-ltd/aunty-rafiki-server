@@ -28,6 +28,7 @@ class TrackerController extends Controller
         foreach ($filteredTrackers  as $tracker) {
             if ($tracker->type != "checkpoint") {
                 $tracker->time = Carbon::now()->subDays($key);
+                $tracker->media = URL::to('/') . $tracker->media;
                 $key++;
             }else{
 
