@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mother;
 use App\Tracker;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,11 +13,18 @@ class TrackerController extends Controller
 {
     public function getTrackers(Request $request)
     {
+
+        $mother = Mother::where('uid', $request->uid)->first();
+        if (!$mother) return response()->json([
+            'trackers' =>  [],
+            'tag' => 'NO_CONCEPTION_DATE'
+        ], 200, [], JSON_NUMERIC_CHECK);;
+
         $key = 0;
-        $conception_date = Carbon::parse($request->conception_date);
+        $conception_date = Carbon::parse($mother->conception_date);
         $weeks =  $conception_date->diffInWeeks(Carbon::now());
         $days =  $conception_date->diffInDays(Carbon::now());
-        ///dd($weeks, $days);
+        
         $trackers = Tracker::orderBy('id', 'DESC')->get();
 
 
@@ -30,9 +38,9 @@ class TrackerController extends Controller
                 $tracker->time = Carbon::now()->subDays($key);
                 $tracker->media = URL::to('/') . $tracker->media;
                 $key++;
-            }else{
-
-            } $tracker->time = Carbon::now()->subDays($key);
+            } else {
+            }
+            $tracker->time = Carbon::now()->subDays($key);
         }
         return response()->json(['trackers' =>  $filteredTrackers], 200, [], JSON_NUMERIC_CHECK);
     }

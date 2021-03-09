@@ -87,6 +87,13 @@ Route::post('editProfile/{profileId}', ['uses' => 'ProfileController@putProfile'
 Route::delete('profile/{profileId}', ['uses' => 'ProfileController@deleteProfile']);
 Route::get('profile/avatar/{profileId}', ['uses' => 'ProfileController@viewProfileImage']);
 
+///Mothers End Points
+Route::post('mother', ['uses' => 'MotherController@postMother']);
+Route::get('mothers', ['uses' => 'MotherController@getMothers']);
+Route::put('mother/{motherId}', ['uses' => 'MotherController@putMother']);
+Route::get('mother/{motherId}', ['uses' => 'MotherController@getMother']);
+Route::delete('mother/{motherId}', ['uses' => 'MotherController@deleteMother']);
+
 
 //Routes of Roles
 Route::get('roles', ['uses' => 'RoleController@getRoles']);
