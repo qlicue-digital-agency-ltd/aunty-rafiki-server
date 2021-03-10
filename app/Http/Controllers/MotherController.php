@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mother;
+use App\Pregnacy;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,6 +14,7 @@ class MotherController extends Controller
     {
 
         $mothers = Mother::all();
+        foreach ($mothers as $mother) $mother->pregnancies;
 
         return response()->json(['mothers' =>  $mothers], 200, [], JSON_NUMERIC_CHECK);
     }
@@ -30,8 +33,8 @@ class MotherController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'uid' => 'required',
-            'conception_date' => 'required'
+            'uid' => 'required|unique:mothers',
+            'first_day_of_your_last_period' => 'required'
         ]);
 
 
@@ -43,9 +46,20 @@ class MotherController extends Controller
         $mother = new   Mother();
 
         $mother->uid = $request->uid;
-        $mother->conception_date = $request->conception_date;
-
         $mother->save();
+
+
+        
+        $due_date = Carbon::parse($request->first_day_of_your_last_period)->addYears(1)->addDays(7)->subMonths(3);
+        $conception_date = Carbon::parse($request->first_day_of_your_last_period)->addYears(1)->addDays(7)->subMonths(3)->subDays(266);
+        $pregnacy = new   Pregnacy();
+
+        $pregnacy->due_date =   $due_date;
+        $pregnacy->conception_date =  $conception_date;
+
+        $mother->pregnancies()->save($pregnacy);
+
+        $mother->pregnancies;
 
         return response()->json(['mother' => $mother], 201, [], JSON_NUMERIC_CHECK);
     }

@@ -21,10 +21,10 @@ class TrackerController extends Controller
         ], 200, [], JSON_NUMERIC_CHECK);;
 
         $key = 0;
-        $conception_date = Carbon::parse($mother->conception_date);
+        $conception_date = Carbon::parse($mother->pregnancies()->first()->conception_date);
         $weeks =  $conception_date->diffInWeeks(Carbon::now());
         $days =  $conception_date->diffInDays(Carbon::now());
-        
+
         $trackers = Tracker::orderBy('id', 'DESC')->get();
 
 

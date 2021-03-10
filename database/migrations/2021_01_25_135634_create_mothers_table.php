@@ -15,8 +15,7 @@ class CreateMothersTable extends Migration
     {
         Schema::create('mothers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('uid');
-            $table->timestamp('conception_date');
+            $table->string('uid')->unique();
             $table->softDeletes();
             $table->timestamps();
         });

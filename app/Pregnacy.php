@@ -5,17 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Mother extends Model
+class Pregnacy extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'uid',
+        'conception_date',
+        'due_date',
+
     ];
 
     protected $dates = ['deleted_at'];
 
-    public function pregnancies()
+    public function mother()
     {
-        return $this->hasMany(Pregnacy::class)->orderby('id', 'desc');
+        return $this->belongsTo(Mother::class);
     }
 }

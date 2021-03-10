@@ -94,6 +94,12 @@ Route::put('mother/{motherId}', ['uses' => 'MotherController@putMother']);
 Route::get('mother/{motherId}', ['uses' => 'MotherController@getMother']);
 Route::delete('mother/{motherId}', ['uses' => 'MotherController@deleteMother']);
 
+///Mothers End Points
+Route::post('pregnacy', ['uses' => 'PregnacyController@postPregnacy']);
+Route::get('pregnacies', ['uses' => 'PregnacyController@getPregnacies']);
+Route::put('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@putPregnacy']);
+Route::get('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@getPregnacy']);
+Route::delete('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@deletePregnacy']);
 
 //Routes of Roles
 Route::get('roles', ['uses' => 'RoleController@getRoles']);
