@@ -16,7 +16,11 @@ class FoodController extends Controller
 
             $food->cover = URL::to('/') . $food->cover;
             $food->recipes;
+            foreach ($food->recipes as $recipe) {
+                $recipe->cover = URL::to('/') . $recipe->cover;
+            }
         }
+
 
         return response()->json(['foods' =>  $foods], 200, [], JSON_NUMERIC_CHECK);
     }

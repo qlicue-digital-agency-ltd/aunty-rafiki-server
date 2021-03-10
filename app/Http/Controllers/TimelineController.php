@@ -13,6 +13,10 @@ class TimelineController extends Controller
     {
 
         $timelines = Timeline::all();
+        foreach ($timelines as $timeline) {
+
+            $timeline->image = URL::to('/') . $timeline->image;
+        }
         return response()->json(['timelines' =>  $timelines], 200, [], JSON_NUMERIC_CHECK);
     }
 
