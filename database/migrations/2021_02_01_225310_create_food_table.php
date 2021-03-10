@@ -15,11 +15,9 @@ class CreateFoodTable extends Migration
     {
         Schema::create('food', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->string('title');
             $table->string('subtitle');
-            $table->longText('ingredients');
-            $table->longText('how_to_prepare');
-            $table->longText('alternative_food');
             $table->string('cover');
 
             $table->softDeletes();

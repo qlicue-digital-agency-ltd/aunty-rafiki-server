@@ -13,7 +13,9 @@ class FoodController extends Controller
     {
         $foods = Food::all();
         foreach ($foods as $food) {
+
             $food->cover = URL::to('/') . $food->cover;
+            $food->recipes;
         }
 
         return response()->json(['foods' =>  $foods], 200, [], JSON_NUMERIC_CHECK);
@@ -25,7 +27,7 @@ class FoodController extends Controller
         $food = Food::find($foodId);
 
         if (!$food) return response()->json(['error' => 'Food Not Found'], 404);
-
+        $food->recipes;
         return response()->json(['food' => $food], 200);
     }
 
@@ -35,7 +37,6 @@ class FoodController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'subtitle' => 'required',
-            'body' => 'required',
         ]);
 
 
@@ -48,7 +49,6 @@ class FoodController extends Controller
 
         $food->title = $request->title;
         $food->subtitle = $request->subtitle;
-        $food->body = $request->body;
         $food->cover = 'cover.png';
 
 
@@ -62,7 +62,6 @@ class FoodController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'subtitle' => 'required',
-            'body' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -78,7 +77,6 @@ class FoodController extends Controller
         $food->update([
             'title' =>  $request->title,
             'subtitle' =>  $request->subtitle,
-            'body' =>  $request->body
         ]);
 
         return response()->json(['food' => $food], 201);

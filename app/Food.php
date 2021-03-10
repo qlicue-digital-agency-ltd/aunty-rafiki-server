@@ -11,9 +11,13 @@ class Food extends Model
     protected $fillable = [
         'title',
         'subtitle',
-        'body',
         'cover',
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }

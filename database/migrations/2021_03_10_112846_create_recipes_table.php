@@ -15,6 +15,7 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->string('title');
             $table->string('subtitle');
             $table->longText('ingredients');
@@ -22,6 +23,8 @@ class CreateRecipesTable extends Migration
             $table->longText('alternative_food');
             $table->string('cover');
             $table->integer('food_id');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

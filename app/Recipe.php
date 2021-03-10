@@ -18,4 +18,9 @@ class Recipe extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function food()
+    {
+        return $this->belongsTo(Food::class);
+    }
 }
