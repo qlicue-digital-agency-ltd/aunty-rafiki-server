@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Storage;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
-        'body' => $faker->sentence(),
+        'body' => $faker->paragraph(),
         'image' => Storage::url($faker->randomElement(['images/diet.jpg', 'images/expecting.jpg', 'images/fruits.jpg', 'images/greens.jpg', 'images/juice.jpg', 'images/weaning.jpg'])),
         'user_id' => $faker->numberBetween($min = 1, $max = 50),
     ];
