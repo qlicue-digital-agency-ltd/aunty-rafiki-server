@@ -10,6 +10,7 @@ class Mother extends Model
     use SoftDeletes;
     protected $fillable = [
         'uid',
+       
     ];
 
     protected $dates = ['deleted_at'];

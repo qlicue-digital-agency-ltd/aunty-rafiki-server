@@ -95,11 +95,11 @@ Route::get('mother/{motherId}', ['uses' => 'MotherController@getMother']);
 Route::delete('mother/{motherId}', ['uses' => 'MotherController@deleteMother']);
 
 ///Mothers End Points
-Route::post('pregnacy', ['uses' => 'PregnacyController@postPregnacy']);
-Route::get('pregnacies', ['uses' => 'PregnacyController@getPregnacies']);
-Route::put('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@putPregnacy']);
-Route::get('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@getPregnacy']);
-Route::delete('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@deletePregnacy']);
+Route::post('pregnancy', ['uses' => 'PregnacyController@postPregnacy']);
+Route::get('pregnancies', ['uses' => 'PregnacyController@getPregnacies']);
+Route::put('pregnancy/{pregnacyId}', ['uses' => 'PregnacyController@putPregnacy']);
+Route::get('pregnancy/{pregnacyId}', ['uses' => 'PregnacyController@getPregnacy']);
+Route::delete('pregnancy/{pregnacyId}', ['uses' => 'PregnacyController@deletePregnacy']);
 
 ///Like end-points
 Route::post('like', ['uses' => 'LikeController@postLike']);
