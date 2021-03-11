@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BloodLevelTableSeeder::class);
         $this->call(TimelineTableSeeder::class);
         $this->call(FoodTableSeeder::class);
+        $this->call(PostTableSeeder::class);
+        $this->call(CommentTableSeeder::class);
     }
 }

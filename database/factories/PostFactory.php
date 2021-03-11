@@ -5,8 +5,7 @@
 use App\Post;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +22,7 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
         'body' => $faker->sentence(),
-        'image' => URL::to('/') . Storage::url($faker->randomElement(['posts/biashara.jpeg', 'posts/bustani.jpg','posts/hewa.jpg','posts/kilimo.jpg','posts/magonjwa.jfif','posts/masoko.jpg','posts/mbegu.jpg','posts/mbolea.jpg','posts/mchicha.jpg','posts/nafaka.jpg','posts/nyanya.jpg','posts/pembejeo.jpg','posts/viwatilifu.jfif',])),
-        'tag' => $faker->randomElement(['viwatilifu', 'mbegu','mbolea','uvunaji','masoko','hewa']),
-        'user_id' => $faker->randomElement([6, 2, 3, 4, 5]),
-        'category_id' => $faker->randomElement([1, 2, 3, 4, 5, 6,7]),
+        'image' => Storage::url($faker->randomElement(['images/diet.jpg', 'images/expecting.jpg', 'images/fruits.jpg', 'images/greens.jpg', 'images/juice.jpg', 'images/weaning.jpg'])),
+        'user_id' => $faker->numberBetween($min = 1, $max = 50),
     ];
 });

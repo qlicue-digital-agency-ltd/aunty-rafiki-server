@@ -101,5 +101,30 @@ Route::put('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@putPregnacy']
 Route::get('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@getPregnacy']);
 Route::delete('pregnacy/{pregnacyId}', ['uses' => 'PregnacyController@deletePregnacy']);
 
+///Like end-points
+Route::post('like', ['uses' => 'LikeController@postLike']);
+Route::get('like/{postId}', ['uses' => 'LikeController@getUsersWhoLikedPost']);
+Route::get('like/{postId}/{userId}', ['uses' => 'LikeController@isLikedByMe']);
+
+
+///Comment End Points
+Route::get('comments', ['uses' => 'CommentController@getComments']);
+Route::post('comment', ['uses' => 'CommentController@postComment']);
+Route::get('comment/{commentId}', ['uses' => 'CommentController@getComment']);
+Route::put('comment/{commentId}', ['uses' => 'CommentController@putComment']);
+Route::delete('comment/{commenttId}', ['uses' => 'CommentController@deleteComment']);
+
+
+///Post End Points
+Route::post('posts', ['uses' => 'PostController@getPosts']);
+Route::post('post', ['uses' => 'PostController@postPost']);
+Route::get('myPosts/{userId}', ['uses' => 'PostController@getMyPosts']);
+Route::get('post/{postId}', ['uses' => 'PostController@getPost']);
+Route::put('post/{postId}', ['uses' => 'PostController@putPost']);
+Route::delete('post/{posttId}', ['uses' => 'PostController@deletePost']);
+Route::post('posts/tourism', ['uses' => 'PostController@getPostsTourism']);
+Route::get('post/img/{posttId}', ['uses' => 'PostController@viewFile']);
+
+
 //Routes of Roles
 Route::get('roles', ['uses' => 'RoleController@getRoles']);
