@@ -74,7 +74,7 @@ class BloodLevelController extends Controller
 
         return response()->json(['bloodlevel' => $bloodlevel], 201, [], JSON_NUMERIC_CHECK);
     }
-
+   
     public function putBloodLevel(Request $request, $bloodlevelId)
     {
         $validator = Validator::make($request->all(), [

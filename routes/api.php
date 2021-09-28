@@ -42,6 +42,22 @@ Route::put('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@putBloo
 Route::get('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@getBloodLevel']);
 Route::delete('bloodlevel/{bloodlevelId}', ['uses' => 'BloodLevelController@deleteBloodLevel']);
 
+///Temperature  End Points
+Route::post('temperature', ['uses' => 'TemperatureController@postTemperature']);
+Route::get('blood', ['uses' => 'TemperatureController@getBlood']);
+Route::get('temperatures/{uid}', ['uses' => 'TemperatureController@getTemperatures']);
+Route::put('temperature/{temperatureId}', ['uses' => 'TemperatureController@putTemperature']);
+Route::get('temperature/{temperatureId}', ['uses' => 'TemperatureController@getTemperature']);
+Route::delete('temperature/{temperatureId}', ['uses' => 'TemperatureController@deleteTemperature']);
+
+///HeartRate  End Points
+Route::post('heartRate', ['uses' => 'HeartRateController@postHeartRate']);
+Route::get('blood', ['uses' => 'HeartRateController@getBlood']);
+Route::get('heartRates/{uid}', ['uses' => 'HeartRateController@getHeartRates']);
+Route::put('heartRate/{heartRateId}', ['uses' => 'HeartRateController@putHeartRate']);
+Route::get('heartRate/{heartRateId}', ['uses' => 'HeartRateController@getHeartRate']);
+Route::delete('heartRate/{heartRateId}', ['uses' => 'HeartRateController@deleteHeartRate']);
+
 ///BagItems End Points
 Route::post('bagItem', ['uses' => 'BagItemController@postBagItem']);
 Route::get('bagItems/{uid}', ['uses' => 'BagItemController@getBagItems']);
